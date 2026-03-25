@@ -1,25 +1,38 @@
-import { ChartTooltip } from '@yss-rui/components';
-import { Card, Typography } from 'antd';
+import { Chart, ChartTooltip } from '@yss-rui/components';
+const { tooltipFormate } = ChartTooltip;
 
 export default () => {
-  const params = [
-    {
-      marker: '<span></span>',
-      seriesName: '序列A',
-      axisValue: '2024-01',
-      seriesType: 'bar',
-      data: [1, 10.12],
-      seriesIndex: 0,
+  const optionDefault = {
+    tooltip: {
+      trigger: 'axis',
+      formatter: (params: any) => {
+        return tooltipFormate(params, { unit: '(元)' });
+      },
     },
-  ];
-  const html = ChartTooltip.tooltipFormate(params, { precision: 2 });
+    xAxis: {
+      type: 'category',
+      boundaryGap: false,
+      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+    },
+    yAxis: {
+      type: 'value',
+    },
+    series: [
+      {
+        name: '示例',
+        data: [820, 932, 901, 934, 1290, 1330, 1320],
+        type: 'line',
+        areaStyle: {},
+      },
+    ],
+  };
 
   return (
-    <Card title="ChartTooltip 格式化">
-      <Typography.Paragraph>
-        tooltipFormate 返回的 HTML 字符串（用于 ECharts tooltip.formatter）：
-      </Typography.Paragraph>
-      <div dangerouslySetInnerHTML={{ __html: html }} />
-    </Card>
+    <div style={{ height: 360, border: '1px solid #f0f0f0' }}>
+      <Chart
+        optionDefault={optionDefault}
+        style={{ width: '100%', height: '100%' }}
+      />
+    </div>
   );
 };

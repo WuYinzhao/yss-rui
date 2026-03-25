@@ -6,11 +6,14 @@ nav:
 group:
   title: 表单
   order: 2
+toc: content
 ---
 
-# DateRangePicker
+## 何时使用
 
-日期范围选择，支持快捷区间与 `DateRangeUtils` 工具函数。
+- 需要日期范围选择能力，并支持开始/结束日期联动。
+- 需要快捷区间（如近一周/近一个月）快速选择日期范围。
+- 需要配合 `DateRangeUtils` 进行快捷区间与日期计算的扩展。
 
 ## 代码演示
 

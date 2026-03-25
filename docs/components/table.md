@@ -6,11 +6,14 @@ nav:
 group:
   title: 数据展示
   order: 1
+toc: content
 ---
 
-# Table
+## 何时使用
 
-基于 `antd` Table，可选 `virtuallist-antd` 虚拟滚动。
+- 需要基于 `antd` 的表格能力，并保持统一的行/列渲染与交互体验。
+- 当数据量较大需要性能优化时，可选启用 `virtuallist-antd` 虚拟滚动。
+- 需要以组件化方式组织表格区域及通用能力（如列配置、表头渲染等）。
 
 ## 代码演示
 

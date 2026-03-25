@@ -6,11 +6,14 @@ nav:
 group:
   title: 数据展示
   order: 1
+toc: content
 ---
 
-# Chart
+## 何时使用
 
-基于 `echarts-for-react` 封装的图表组件。
+- 需要基于 `echarts-for-react` 封装图表，实现组件化的 ECharts 渲染。
+- 需要对图表交互内容（如 Tooltip）进行格式化与自定义展示。
+- 需要在项目中统一图表容器/样式，提升可维护性。
 
 ## 代码演示
 

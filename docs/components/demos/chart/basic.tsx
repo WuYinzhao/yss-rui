@@ -1,5 +1,4 @@
 import { Chart } from '@yss-rui/components';
-import { Card } from 'antd';
 
 export default () => {
   const optionDefault = {
@@ -10,11 +9,11 @@ export default () => {
   };
 
   return (
-    <Card title="Chart 基础示例">
+    <div style={{ height: 360, border: '1px solid #f0f0f0' }}>
       <Chart
         optionDefault={optionDefault}
-        style={{ width: '100%', height: 320 }}
+        style={{ width: '100%', height: '100%' }}
       />
-    </Card>
+    </div>
   );
 };

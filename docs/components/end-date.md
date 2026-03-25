@@ -6,11 +6,14 @@ nav:
 group:
   title: 表单
   order: 2
+toc: content
 ---
 
-# EndDate
+## 何时使用
 
-结束日选择组件，配合 `EndDateUtils` 使用。
+- 需要在日期选择中单独控制“结束日”行为。
+- 需要配合 `EndDateUtils` 获取/计算结束日逻辑，减少重复代码。
+- 需要与起始日期联动，提升表单交互的一致性。
 
 ## 代码演示
 
