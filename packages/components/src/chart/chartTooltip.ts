@@ -27,7 +27,7 @@ export const createArrayTooltipFormatter = <T>(
       seriesIndex,
       unit: itemUnit,
     } = item || {};
-    if (index == 0 && tittle) {
+    if (index === 0 && tittle) {
       result += axisValue + '<br/>';
     }
     let unit = '';
@@ -50,7 +50,10 @@ export const createArrayTooltipFormatter = <T>(
       unit = itemUnit;
     }
     const data = Array.isArray(itemData) ? itemData[seriesIndex + 1] : itemData;
-    result += createToolTipInner({ marker, name: seriesName, value: data }, { ...options, unit });
+    result += createToolTipInner(
+      { marker, name: seriesName, value: data },
+      { ...options, unit },
+    );
   });
 
   return result;
@@ -63,7 +66,7 @@ export const createToolTipInner = (
   if (!value || isNaN(value)) {
     return '';
   }
-  const { unit = '', precision = 2 } = options || {};
+  const { unit = '' } = options || {};
   return (
     '<div style="display:flex;align-items:center;justify-content:space-between;">' +
     `<span style='margin-right:12px'>${marker + name + unit}</span>` +
@@ -72,7 +75,7 @@ export const createToolTipInner = (
   );
 };
 
-export const createTooltipValueTmpl = (value: string | number, precision: number = 2): string => {
+export const createTooltipValueTmpl = (value: string | number): string => {
   return `<span style="margin-left:0.2rem;">${value}</span>`;
 };
 

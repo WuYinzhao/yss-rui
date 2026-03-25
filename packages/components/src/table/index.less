@@ -1,23 +1,29 @@
 @import '../styles/index.less';
+
 #independent {
   .ant-table-body {
     .scrollbar();
+
     table {
       border-bottom: 1px solid #fff;
     }
+
     .virtuallist {
       // 解决虚拟表格滚动条错乱问题
       margin-bottom: 1px;
     }
   }
+
   .ant-table-header table {
     border: none !important;
   }
+
   .ant-table-container,
   td,
   th {
     border: none;
   }
+
   .ant-table-thead th,
   .ant-table-thead td {
     background: #f0f3f7;
@@ -28,18 +34,22 @@
     font-family: SourceHanSansCN-Medium;
     font-weight: 500;
     line-height: 20px;
-    padding: 10px 12px 9px 12px;
+    padding: 10px 12px 9px;
+
     &.ant-table-cell-ellipsis {
       white-space: normal;
     }
+
     &::before {
       height: 0;
     }
   }
+
   .ant-table-tbody tr:nth-child(odd),
   .ant-table-tbody tr:nth-child(odd) .ant-table-cell-fix-left {
     background: #f5f7fa;
   }
+
   td {
     padding: 10px 12px;
     line-height: 16px;

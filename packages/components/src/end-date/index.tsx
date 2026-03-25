@@ -50,7 +50,7 @@ export default (props: any) => {
   }, [selectVal]);
   const onDateChange = (val: any) => {
     let endDate = val.endOf(picker).format(format);
-    if (selectVal == 'custom') setCustomDate(endDate);
+    if (selectVal === 'custom') setCustomDate(endDate);
     const validate = assignDateValidate(endDate);
     setDateState(validate);
     onChange?.({ endDate, selectVal });
@@ -60,16 +60,16 @@ export default (props: any) => {
   };
   const onSelectChange = (val: any) => {
     let newValue = '';
-    if (val == 'custom') {
+    if (val === 'custom') {
       newValue = customDate || endDateInit;
     } else {
-      if (val == '1') {
+      if (val === '1') {
         // 获取上季末
         newValue = getQuarterDay('YYYY-MM-DD');
-      } else if (val == '3') {
+      } else if (val === '3') {
         // 获取上半年末
         newValue = getHalfYearDay('YYYY-MM-DD');
-      } else if (val == '6') {
+      } else if (val === '6') {
         // 获取上年末
         newValue = getLastYearDay('YYYY-MM-DD');
       }
@@ -95,7 +95,7 @@ export default (props: any) => {
           showToday={false}
           status={dateState.state}
           allowClear={false}
-          value={dayjs(endDate, picker == 'quarter' ? 'YYYY-Q' : format)}
+          value={dayjs(endDate, picker === 'quarter' ? 'YYYY-Q' : format)}
           onChange={onDateChange}
         />
       </div>

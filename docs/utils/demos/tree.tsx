@@ -53,7 +53,7 @@ export default () => {
         )}
       </pre>
 
-      <Divider>禁用 key= '1-1 ' 的节点</Divider>
+      <Divider>禁用 key=1-1的节点</Divider>
       <Tree treeData={disabledTree as DataNode[]} defaultExpandAll checkable />
     </Card>
   );

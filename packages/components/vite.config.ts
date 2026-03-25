@@ -48,7 +48,7 @@ export default defineConfig({
     lib: {
       entry: resolve('src/index.ts'),
       name: 'componentLibrary',
-      fileName: (format) => `[name].js`,
+      fileName: () => `[name].js`,
       formats: ['es', 'cjs', 'umd'],
     },
     cssCodeSplit: false,

@@ -1,4 +1,3 @@
-import { cloneDeep } from 'lodash';
 /** 获取treeName
  *  list 为整个数组
  *  val为当前item得key
@@ -38,9 +37,11 @@ export const expandedKeyArr = (val: any, method: any, data: any) => {
   //  val 数据
   //  method 方法
   let originalArray = method !== '' ? method(val, data) : val;
-  let uniqueArray = originalArray.filter((item: any, index: any, array: any) => {
-    return array.indexOf(item) === index;
-  });
+  let uniqueArray = originalArray.filter(
+    (item: any, index: any, array: any) => {
+      return array.indexOf(item) === index;
+    },
+  );
   return uniqueArray;
 };
 
@@ -53,22 +54,31 @@ export const getFirstLevelKeys = (data: any): string[] => {
   if (Array.isArray(data) && data.length > 0) {
     const first = data[0];
     keys.push(first.key);
-    if (first.children && Array.isArray(first.children) && first.children.length > 0) {
+    if (
+      first.children &&
+      Array.isArray(first.children) &&
+      first.children.length > 0
+    ) {
       keys.push(...getFirstLevelKeys(first.children));
     }
   }
   return keys;
 };
 /** 根据树形结构获取全部key */
-export const getAllKeysForTreeData = (data: any, disbaleFun?: Function): string[] => {
+export const getAllKeysForTreeData = (
+  data: any,
+  disbaleFun?: (item: any) => boolean,
+): string[] => {
   const keys: string[] = [];
   for (let i in data) {
-    if (!disbaleFun || !disbaleFun(data[i].data)) {
-      keys.push(data[i].key);
-    }
-    if (data[i].children) {
-      //如果有children层，则继续遍历
-      keys.push(...getAllKeysForTreeData(data[i].children, disbaleFun));
+    if (Object.prototype.hasOwnProperty.call(data, i)) {
+      if (!disbaleFun || !disbaleFun(data[i].data)) {
+        keys.push(data[i].key);
+      }
+      if (data[i].children) {
+        //如果有children层，则继续遍历
+        keys.push(...getAllKeysForTreeData(data[i].children, disbaleFun));
+      }
     }
   }
   return keys;
@@ -106,12 +116,12 @@ export const arrayTreeFilter = (data: any, predicate: any, filterText: any) => {
 
 /** 搜索展开 key函数 */
 export const expandedKeysFun = (treeData: any) => {
-  if (treeData && treeData.length == 0) {
+  if (treeData && treeData.length === 0) {
     return [];
   }
   let arr: any[] = [];
   const expandedKeysFn = (treeData: any) => {
-    treeData.map((item: any, index: any) => {
+    treeData.forEach((item: any) => {
       arr.push(item.key);
       if (item.children && item.children?.length > 0) {
         expandedKeysFn(item.children);

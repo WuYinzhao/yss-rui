@@ -49,7 +49,7 @@ export default (props: any) => {
   }, [min_date]);
   const datePickerChange = (val: any, index: any) => {
     const [first, second] = date;
-    if (index == 0) {
+    if (index === 0) {
       onDateChange && onDateChange([val, second]);
     } else {
       onDateChange && onDateChange([first, val]);
@@ -67,10 +67,10 @@ export default (props: any) => {
     onChange({ selectVal, date });
   };
   const onSelectChange = (val: any) => {
-    if (val == 'custom') {
+    if (val === 'custom') {
       onChange({ selectVal: 'custom', date: date });
     } else {
-      if (val == 'establish') {
+      if (val === 'establish') {
         setBeginDate({ type: val, beginDate: min_date, minDate: min_date });
       } else {
         setBeginDate({ type: val, minDate: min_date });
@@ -86,7 +86,7 @@ export default (props: any) => {
     const { minDate, type = '', beginDate } = param;
     let newValue = [beginDate, endDate];
     const innerType = type || selectVal;
-    if (innerType == 'custom') {
+    if (innerType === 'custom') {
       return;
     }
     if (innerType !== 'establish') {

@@ -22,7 +22,7 @@ const calculateDepth = (arr: any, depth = 0) => {
  * lineHeight 表头行高
  * paddingNum=表格上下的边距24*2
  */
-export const baseTable = (props: any) => {
+export default (props: any) => {
   const {
     size = 'middle',
     bordered = true,
@@ -77,4 +77,3 @@ export const baseTable = (props: any) => {
     ></Table>
   );
 };
-export default baseTable;

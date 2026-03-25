@@ -5,7 +5,7 @@ import { findParentKeys, getAllKeysForTreeData, macSystem } from './utils';
 const { TreeNode } = Tree;
 
 const isMac = macSystem();
-const baseTree = (props: any, ref: any) => {
+export default (props: any) => {
   const {
     searchValue = '',
     treeList,
@@ -100,7 +100,7 @@ const baseTree = (props: any, ref: any) => {
   // 处理树
   const renderTreeNode = (data: any, disabled = false) => {
     //生成树结构函数
-    if (data.length == 0) {
+    if (data.length === 0) {
       return;
     }
     return data.map((item: any) => {
@@ -164,5 +164,3 @@ const baseTree = (props: any, ref: any) => {
     </Tree>
   );
 };
-
-export default baseTree;

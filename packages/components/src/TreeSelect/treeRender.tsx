@@ -1,5 +1,5 @@
-import React, { ReactNode } from 'react';
-import { Checkbox, Divider, Spin, Tag } from 'antd';
+import { Checkbox, Divider, Spin } from 'antd';
+import { ReactNode } from 'react';
 import './index.less';
 interface PropType {
   hasData: boolean;
@@ -10,7 +10,8 @@ interface PropType {
   onCheckAll: (status: boolean) => void;
 }
 export default (props: PropType) => {
-  const { children, loading, search, hasData, checkAllStatus, onCheckAll } = props;
+  const { children, loading, search, hasData, checkAllStatus, onCheckAll } =
+    props;
   return (
     <Spin spinning={loading}>
       {search || !hasData ? (

@@ -14,7 +14,7 @@ onSelectKeys 事件名称
 size  大小
 showSwitcher  是否显示展开收起按钮
 */
-export const siderTree = (props: any) => {
+export default (props: any) => {
   const [collapsed, setCollapsed] = useState(false);
   const {
     treeData,
@@ -73,5 +73,3 @@ export const siderTree = (props: any) => {
     </div>
   );
 };
-
-export default siderTree;

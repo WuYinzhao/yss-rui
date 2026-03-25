@@ -14,11 +14,13 @@ export const Component = (props: any) => {
   const [search, setSearchValue] = useState('');
 
   const checkAll = useMemo(() => {
-    return treeData.length == value.length;
+    return treeData.length === value.length;
   }, [treeData, value]);
 
   const onCheckAll = (checked: boolean) => {
-    onChange(checked ? treeData.map((item: any) => item[fieldNames.value]) : []);
+    onChange(
+      checked ? treeData.map((item: any) => item[fieldNames.value]) : [],
+    );
   };
 
   return (

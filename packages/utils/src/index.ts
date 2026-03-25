@@ -123,7 +123,7 @@ export const cloneData: (data: any, addSome?: object) => any = (
   addSome?: object,
 ) => {
   const tree: any[] = [];
-  data.map((item: any) => {
+  data.forEach((item: any) => {
     let newData = {
       ...item,
     };
@@ -144,7 +144,7 @@ export const cloneList: (data: any, addSome?: object) => any = (
   addSome?: object,
 ) => {
   const tree: any[] = [];
-  data.map((item: any) => {
+  data.forEach((item: any) => {
     let newData = {
       ...item,
     };
@@ -432,7 +432,7 @@ export const arrayCompare = (data: any, list: any) => {
   let array = [];
   for (let i = 0; i < data.length; i++) {
     for (let j = 0; j < list.length; j++) {
-      if (data[i] == list[j].key) {
+      if (data[i] === list[j].key) {
         array.push(list[j].pfregionIdD);
         break;
       }
@@ -474,7 +474,7 @@ export const diffOldValueInTree = (data: any, oldVal: any) => {
     if (children && children.length > 0) {
       return diffOldValueInTree(children, oldVal);
     }
-    return value == oldVal;
+    return value === oldVal;
   });
 };
 
@@ -511,8 +511,10 @@ export const openObjectAry = (data = []): any => {
   const temp: any = {};
   data.forEach((element) => {
     for (const key in element) {
-      !temp[key] && (temp[key] = []);
-      temp[key].push(element[key]);
+      if (Object.prototype.hasOwnProperty.call(element, key)) {
+        !temp[key] && (temp[key] = []);
+        temp[key].push(element[key]);
+      }
     }
   });
   return temp;
@@ -665,12 +667,12 @@ export const getRowSpan = (data = [], colNameList: string[]) => {
     const field = 'rowSpan' + colName;
     const leftField = index ? 'rowSpan' + colNameList[index - 1] : '';
     data.forEach((item: any, index: number) => {
-      if (item[colName] == '-') {
+      if (item[colName] === '-') {
         item[field] = 1;
       } else if (
         data[index - 1] &&
         item[colName] === data[index - 1][colName] &&
-        (!leftField || item[leftField] == 0)
+        (!leftField || item[leftField] === 0)
       ) {
         item[field] = 0;
       } else {
@@ -679,7 +681,7 @@ export const getRowSpan = (data = [], colNameList: string[]) => {
         for (let i = 0; i < afterList.length; i++) {
           if (
             item[colName] === afterList[i][colName] &&
-            (!leftField || afterList[i][leftField] == 0)
+            (!leftField || afterList[i][leftField] === 0)
           ) {
             num++;
           } else {
@@ -696,12 +698,15 @@ export const getRowSpan = (data = [], colNameList: string[]) => {
 /** 递归给数据增加单位字段 */
 export const deepAddField = (data: any, fieldObj: any, unitAttr: string) => {
   return data.map((item: any) => {
-    if (item.children?.length) {
-      item.children = deepAddField(item.children, fieldObj, unitAttr);
-    } else {
-      item = item[unitAttr] ? { ...item, ...fieldObj } : item;
-    }
-    return item;
+    return data.map((item: any) => {
+      if (item.children?.length) {
+        return {
+          ...item,
+          children: deepAddField(item.children, fieldObj, unitAttr),
+        };
+      }
+      return item[unitAttr] ? { ...item, ...fieldObj } : item;
+    });
   });
 };
 
@@ -720,10 +725,12 @@ export const openObjectArry = (data = []) => {
   const temp = {};
   data.forEach((element) => {
     for (const key in element) {
-      // @ts-ignore
-      !temp[key] && (temp[key] = []);
-      // @ts-ignore
-      temp[key].push(element[key]);
+      if (Object.prototype.hasOwnProperty.call(element, key)) {
+        // @ts-ignore
+        !temp[key] && (temp[key] = []);
+        // @ts-ignore
+        temp[key].push(element[key]);
+      }
     }
   });
   return temp;

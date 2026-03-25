@@ -1,6 +1,6 @@
-import moment from 'moment';
-import { isEmpty, cloneDeep } from 'lodash';
 import html2canvas from 'html2canvas';
+import { cloneDeep, isEmpty } from 'lodash';
+import moment from 'moment';
 
 export default () => {
   type DataItem = {
@@ -53,12 +53,15 @@ export default () => {
     return info ? JSON.parse(info).userId : '';
   };
   // 获取菜单
-  const getMenuByPath = (data: DataItem[], path: string): DataItem | undefined => {
+  const getMenuByPath = (
+    data: DataItem[],
+    path: string,
+  ): DataItem | undefined => {
     if (data && Array.isArray(data)) {
       for (let index = 0; index < data.length; index++) {
         const element = data[index];
         const { value, children } = element;
-        if (value == path) {
+        if (value === path) {
           return element;
         } else if (children && Array.isArray(children)) {
           const result: DataItem | undefined = getMenuByPath(children, path);
@@ -82,7 +85,10 @@ export default () => {
     return result;
   };
   // 获取当前菜单名称
-  const getMenuName = (data: DataItem[], path: string): DataItem | undefined => {
+  const getMenuName = (
+    data: DataItem[],
+    path: string,
+  ): DataItem | undefined => {
     if (data && Array.isArray(data)) {
       for (let i = 0; i < data.length; i++) {
         if (data[i].value === path) {
@@ -99,9 +105,12 @@ export default () => {
     }
   };
   // 递归循环菜单（后面迭代）
-  const cloneData: (data: any, addSome?: object) => any = (data: any, addSome?: object) => {
+  const cloneData: (data: any, addSome?: object) => any = (
+    data: any,
+    addSome?: object,
+  ) => {
     const tree: any[] = []; //新建空数组
-    data.map((item: any) => {
+    data.forEach((item: any) => {
       let newData = {
         ...item,
       };
@@ -116,9 +125,12 @@ export default () => {
     return tree;
   };
   // 递归循环菜单(前几个迭代)
-  const cloneList: (data: any, addSome?: object) => any = (data: any, addSome?: object) => {
+  const cloneList: (data: any, addSome?: object) => any = (
+    data: any,
+    addSome?: object,
+  ) => {
     const tree: any[] = []; //新建空数组
-    data.map((item: any) => {
+    data.forEach((item: any) => {
       let newData = {
         ...item,
       };
@@ -173,7 +185,9 @@ export default () => {
   const getYearEndDate = (num = 1) => {
     const yesteryear = moment().year() - 1;
     if (num === 1)
-      return moment(moment().year(yesteryear).endOf('year').valueOf()).format('YYYY-MM-DD');
+      return moment(moment().year(yesteryear).endOf('year').valueOf()).format(
+        'YYYY-MM-DD',
+      );
     return moment(
       moment()
         .year(yesteryear - num)
@@ -193,7 +207,9 @@ export default () => {
   const getYearStartOfDate = (num = 1) => {
     const yesteryear = moment().year() - 1;
     if (num === 1)
-      return moment(moment().year(yesteryear).startOf('year').valueOf()).format('YYYY-MM-DD');
+      return moment(moment().year(yesteryear).startOf('year').valueOf()).format(
+        'YYYY-MM-DD',
+      );
     return moment(
       moment()
         .year(yesteryear - num)
@@ -266,7 +282,11 @@ export default () => {
     }, initAry);
   };
   // 处理树形表格数据
-  const getExpandedRowKeys = (data: any, initAry: any = [], name: string = 'children') => {
+  const getExpandedRowKeys = (
+    data: any,
+    initAry: any = [],
+    name: string = 'children',
+  ) => {
     return data.reduce((prev: any, cur: any) => {
       if (cur[name] && !isEmpty(cur[name])) {
         initAry.push(cur.id);
@@ -406,7 +426,7 @@ export default () => {
     let array = [];
     for (let i = 0; i < data.length; i++) {
       for (let j = 0; j < list.length; j++) {
-        if (data[i] == list[j].key) {
+        if (data[i] === list[j].key) {
           array.push(list[j].pfregionIdD);
           break;
         }
@@ -449,7 +469,7 @@ export default () => {
       if (children && children.length > 0) {
         return diffOldValueInTree(children, oldVal);
       }
-      return value == oldVal;
+      return value === oldVal;
     });
   };
   /** 获取treeName */
@@ -483,8 +503,10 @@ export default () => {
     const temp: any = {};
     data.forEach((element) => {
       for (const key in element) {
-        !temp[key] && (temp[key] = []);
-        temp[key].push(element[key]);
+        if (Object.prototype.hasOwnProperty.call(element, key)) {
+          !temp[key] && (temp[key] = []);
+          temp[key].push(element[key]);
+        }
       }
     });
     return temp;
@@ -549,7 +571,9 @@ export default () => {
 
   const screenShotImage = async (domId: string) => {
     const dom = cloneDom(domId);
-    const targetElement: HTMLElement | null = document.querySelector(`#${domId}`);
+    const targetElement: HTMLElement | null = document.querySelector(
+      `#${domId}`,
+    );
 
     if (dom && targetElement) {
       const width = targetElement.offsetWidth;
@@ -579,16 +603,28 @@ export default () => {
   };
 
   const disabledSecurity = (current: any) => {
-    return current && (current < moment('2009-01-01') || current > moment().subtract(2, 'days'));
+    return (
+      current &&
+      (current < moment('2009-01-01') || current > moment().subtract(2, 'days'))
+    );
   };
   const disabledProvide = (current: any) => {
-    return current && (current < moment('2018-04-01') || current > moment().subtract(2, 'days'));
+    return (
+      current &&
+      (current < moment('2018-04-01') || current > moment().subtract(2, 'days'))
+    );
   };
   const disabledInitiate = (current: any) => {
-    return current && (current < moment('2002-01-01') || current > moment().subtract(2, 'days'));
+    return (
+      current &&
+      (current < moment('2002-01-01') || current > moment().subtract(2, 'days'))
+    );
   };
   const disabledFinish = (current: any) => {
-    return current && (current < moment('2016-12-26') || current > moment().subtract(2, 'days'));
+    return (
+      current &&
+      (current < moment('2016-12-26') || current > moment().subtract(2, 'days'))
+    );
   };
 
   // 禁止选择今天及今天之后日期
@@ -619,12 +655,12 @@ export default () => {
       const leftField = index ? 'rowSpan' + colNameList[index - 1] : '';
       //  增加 (!leftField || item[leftField] == 0)   为了当左侧列为不合并时使右侧列虽然同名但依然不合并该项
       data.forEach((item: any, index: number) => {
-        if (item[colName] == '-') {
+        if (item[colName] === '-') {
           item[field] = 1;
         } else if (
           data[index - 1] &&
           item[colName] === data[index - 1][colName] &&
-          (!leftField || item[leftField] == 0)
+          (!leftField || item[leftField] === 0)
         ) {
           // 判断当前行的colName和上一行是否一样  且左侧为已合并的列 一样则设置为0
           item[field] = 0;
@@ -635,7 +671,7 @@ export default () => {
           for (let i = 0; i < afterList.length; i++) {
             if (
               item[colName] === afterList[i][colName] &&
-              (!leftField || afterList[i][leftField] == 0)
+              (!leftField || afterList[i][leftField] === 0)
             ) {
               num++;
             } else {
@@ -652,11 +688,12 @@ export default () => {
   const deepAddField = (data: any, fieldObj: any, unitAttr: string) => {
     return data.map((item: any) => {
       if (item.children?.length) {
-        item.children = deepAddField(item.children, fieldObj, unitAttr);
-      } else {
-        item = item[unitAttr] ? { ...item, ...fieldObj } : item;
+        return {
+          ...item,
+          children: deepAddField(item.children, fieldObj, unitAttr),
+        };
       }
-      return item;
+      return item[unitAttr] ? { ...item, ...fieldObj } : item;
     });
   };
   // 处理双日期框日期为正常参数
@@ -674,21 +711,31 @@ export default () => {
     const temp = {};
     data.forEach((element) => {
       for (const key in element) {
-        // @ts-ignore
-        !temp[key] && (temp[key] = []);
-        // @ts-ignore
-        temp[key].push(element[key]);
+        if (Object.prototype.hasOwnProperty.call(element, key)) {
+          // @ts-ignore
+          !temp[key] && (temp[key] = []);
+          // @ts-ignore
+          temp[key].push(element[key]);
+        }
       }
     });
     return temp;
   };
   //percentage中的列乘100 并处理小数
-  const percentageHandler = (data: any[], percentage: string[], smallNum?: number) => {
+  const percentageHandler = (
+    data: any[],
+    percentage: string[],
+    smallNum?: number,
+  ) => {
     data.forEach((item: any) => {
       for (const key in item) {
         if (percentage.includes(key)) {
           let val = Number(item[key]);
-          item[key] = isNaN(val) ? item[key] : smallNum ? (val * 100).toFixed(smallNum) : val * 100;
+          item[key] = isNaN(val)
+            ? item[key]
+            : smallNum
+            ? (val * 100).toFixed(smallNum)
+            : val * 100;
         }
       }
     });
@@ -737,7 +784,10 @@ export default () => {
     return data;
   };
 
-  const getFirstOrDefault = (data: Array<{ [key: string]: string }>, key: string = 'key') => {
+  const getFirstOrDefault = (
+    data: Array<{ [key: string]: string }>,
+    key: string = 'key',
+  ) => {
     if (data && data.length > 0) {
       return data[0][key];
     }
@@ -750,7 +800,10 @@ export default () => {
    * @param {string} childrenKey - 子节点数组的键名，默认为'children'
    * @returns {Object|null} 找到的第一个叶子节点，没有找到则返回null
    */
-  const findFirstLeafNodeInArray: any = (treeArray: any[], childrenKey = 'children') => {
+  const findFirstLeafNodeInArray: any = (
+    treeArray: any[],
+    childrenKey = 'children',
+  ) => {
     // 检查参数有效性
     if (!Array.isArray(treeArray) || treeArray.length === 0) {
       return null;
@@ -764,7 +817,9 @@ export default () => {
 
       // 检查当前节点是否有子节点
       const hasChildren =
-        node[childrenKey] && Array.isArray(node[childrenKey]) && node[childrenKey].length > 0;
+        node[childrenKey] &&
+        Array.isArray(node[childrenKey]) &&
+        node[childrenKey].length > 0;
 
       // 如果是叶子节点，直接返回
       if (!hasChildren) {

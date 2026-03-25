@@ -6,7 +6,7 @@ import { useCallback, useEffect, useState } from 'react';
  * @param ref - 要观察的元素的 ref
  * @returns 元素的高度
  */
-export const observerHeight = (ref: React.RefObject<HTMLElement>) => {
+export const useObserverHeight = (ref: React.RefObject<HTMLElement>) => {
   const [height, setHeight] = useState(0);
 
   const heightChange = useCallback(
@@ -37,5 +37,5 @@ export const observerHeight = (ref: React.RefObject<HTMLElement>) => {
 };
 
 export default {
-  observerHeight,
+  useObserverHeight,
 };

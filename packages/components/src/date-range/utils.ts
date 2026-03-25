@@ -1,5 +1,5 @@
-import { isEmpty } from 'lodash';
 import dayjs from 'dayjs';
+import { isEmpty } from 'lodash';
 export type DateUnitTYpe = 'days' | 'months' | 'years';
 export const getPastDayOfSomeDay = (param: {
   someDay: string; //开始日期
@@ -16,7 +16,11 @@ export const getPastDayOfSomeDay = (param: {
   }
   return newMoment.add(1, 'days').format(format);
 };
-export const getBeginDate = (endDate: string, amount: number, minDate: string) => {
+export const getBeginDate = (
+  endDate: string,
+  amount: number,
+  minDate: string,
+) => {
   const beginDate = getPastDayOfSomeDay({
     someDay: endDate,
     amount: amount,
@@ -25,7 +29,7 @@ export const getBeginDate = (endDate: string, amount: number, minDate: string) =
 };
 
 export const getOption = (options = [], key: string) => {
-  return options.find((item: any) => item.value == key);
+  return options.find((item: any) => item.value === key);
 };
 export const assignDateValidate = (
   date: [string, string],
@@ -34,10 +38,12 @@ export const assignDateValidate = (
 ) => {
   const [beginDate, endDate] = date;
   if (beginDate && endDate) {
-    const state = dayjs(beginDate).isBefore(endDate) || dayjs(beginDate).isSame(endDate);
+    const state =
+      dayjs(beginDate).isBefore(endDate) || dayjs(beginDate).isSame(endDate);
     if (!isEmpty(timeDifference)) {
       const [num, type] = timeDifference;
-      const timeDifferenceState = dayjs(endDate).diff(dayjs(beginDate), type) < num;
+      const timeDifferenceState =
+        dayjs(endDate).diff(dayjs(beginDate), type) < num;
       if (!timeDifferenceState) {
         return [
           {
@@ -89,15 +95,21 @@ export const assignDateValidate = (
 };
 //上上月末的年初---------上上月末
 export const getInitValue = (forward: number = 2) => {
-  const endDateInit = dayjs(dayjs().subtract(forward, 'M')).endOf('M').format('YYYY-MM-DD');
+  const endDateInit = dayjs(dayjs().subtract(forward, 'M'))
+    .endOf('M')
+    .format('YYYY-MM-DD');
   const startDateInit = dayjs(endDateInit).startOf('year').format('YYYY-MM-DD');
   return [startDateInit, endDateInit];
 };
 
 //上上月初---------上上月末
 export const getMonthInitValue = (forward: number = 2) => {
-  const endDateInit = dayjs(dayjs().subtract(forward, 'M')).endOf('M').format('YYYY-MM-DD');
-  const startDateInit = dayjs(dayjs().subtract(forward, 'M')).startOf('M').format('YYYY-MM-DD');
+  const endDateInit = dayjs(dayjs().subtract(forward, 'M'))
+    .endOf('M')
+    .format('YYYY-MM-DD');
+  const startDateInit = dayjs(dayjs().subtract(forward, 'M'))
+    .startOf('M')
+    .format('YYYY-MM-DD');
   return [startDateInit, endDateInit];
 };
 

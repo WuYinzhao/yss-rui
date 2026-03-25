@@ -24,9 +24,9 @@
     "docs:build": "dumi build",
     "docs:preview": "dumi preview",
     "doctor": "father doctor",
-    "lint": "pnpm run lint:es && pnpm run lint:css",
-    "lint:css": "stylelint \"{src,test}/**/*.{css,less}\"",
-    "lint:es": "eslint \"{src,test}/**/*.{js,jsx,ts,tsx}\"",
+    "lint": "pnpm run lint:es && pnpm run lint:style",
+    "lint:es": "eslint **/*.{js,jsx,ts,tsx} --fix",
+    "lint:style": "stylelint **/*.{css,less} --fix",
     "prepare": "husky install && dumi setup",
     "prepublishOnly": "father doctor && pnpm run build",
     "start": "pnpm run dev"
@@ -52,6 +52,11 @@
       "eslint --fix",
       "prettier --parser=typescript --write"
     ]
+  },
+  "dependencies": {
+    "@ant-design/icons": "~5.6.1",
+    "antd": "~5.29.3",
+    "dayjs": "^1.11.20"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",
@@ -80,10 +85,5 @@
   },
   "authors": [
     "wuyinzhao"
-  ],
-  "dependencies": {
-    "@ant-design/icons": "~5.6.1",
-    "antd": "~5.29.3",
-    "dayjs": "^1.11.20"
-  }
+  ]
 }
