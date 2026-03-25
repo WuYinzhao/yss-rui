@@ -18,16 +18,19 @@ width：左侧菜单宽度
 treeData  data数据
 title prohibitSubordinates是多选（父子不关联）
 */
-const complexTree = (props: any) => {
+export default (props: any) => {
+  const [collapsed, setCollapsed] = useState(false);
+  const [searchValue, setSearchValue] = useState('');
+  const [treeList, setTreeList] = useState([]);
+  const [expandedKeys, setExpandedKeys] = useState<string[]>([]);
   const {
     width = 280,
     treeData,
     checkedKeys,
     describeTips = 'Ctrl+选中：全选所有子节点',
-    isToggleData,
-    isToggleKey,
+    toggleData = [], //切换组合树
+    toggleKey = '', //切换组合树的key
     disabledItemFunc,
-    isToggle = false,
     showLine = true,
     switcherIcon = true,
     onClickToggle,
@@ -37,11 +40,6 @@ const complexTree = (props: any) => {
     checkStrictly = true, // 是否禁用父子关联属性
     disableChildren = false, //父节点选中后是否禁用子节点
   } = props;
-
-  const [collapsed, setCollapsed] = useState(false);
-  const [searchValue, setSearchValue] = useState('');
-  const [treeList, setTreeList] = useState([]);
-  const [expandedKeys, setExpandedKeys] = useState<string[]>([]);
 
   /** 初始化tree数据 */
   useEffect(() => {
@@ -143,31 +141,24 @@ const complexTree = (props: any) => {
       </div>
       <div
         style={{
-          display: collapsed ? 'none' : isToggle ? 'block' : 'none',
+          display: collapsed ? 'none' : toggleData.length ? 'block' : 'none',
           marginBottom: '2px',
         }}
       >
-        <div className="isToggle">
-          {isToggleData &&
-            isToggleData.map((item: any) => (
+        <div className="toggle-container">
+          {toggleData.length &&
+            toggleData.map((item: any) => (
               <span
                 onClick={() => {
-                  isToggleData.length > 1 ? onChangeToggle(item.value) : '';
+                  onChangeToggle(item.value);
                 }}
                 key={item.value}
                 className={
-                  isToggleData.length === 1 ? 'isToggleSpanOne' : 'isToggleSpan'
+                  toggleKey === item.value || toggleData.length === 1
+                    ? 'toggle-item-active'
+                    : ''
                 }
-                style={{
-                  background:
-                    isToggleKey === item.value && isToggleData.length > 1
-                      ? '#E50000'
-                      : '',
-                  color:
-                    isToggleKey === item.value && isToggleData.length > 1
-                      ? '#FFF'
-                      : '',
-                }}
+                title={item.label}
               >
                 {item.label}
               </span>
@@ -184,7 +175,7 @@ const complexTree = (props: any) => {
         style={{
           display: collapsed ? 'none' : 'block',
           height: `calc(100% - 88px - ${isCtrl ? '32px' : '0px'} - ${
-            isToggle ? '30px' : '0px'
+            toggleData.length ? '30px' : '0px'
           })`,
           padding: '8px  0 0 12px',
           background: '#fff',
@@ -209,5 +200,3 @@ const complexTree = (props: any) => {
     </div>
   );
 };
-
-export default complexTree;
