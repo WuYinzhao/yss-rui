@@ -17,9 +17,29 @@ toc: content
 
 ## 代码演示
 
-### 组件
+### 正常使用
 
 <code src="./demos/date-range/basic.tsx"></code>
+
+### 自定义左侧快捷选项
+
+<code src="./demos/date-range/option-date.tsx"></code>
+
+### 禁用左侧快捷选项
+
+<code src="./demos/date-range/no-option-date.tsx"></code>
+
+### 自定义最小日期
+
+tips:默认最小日期为 2002 年 1 月 1 日，在选择成立以来选项时开始日期会设置为最小日期
+
+<code src="./demos/date-range/custom-min-date.tsx"></code>
+
+### 自定义日期禁用规则
+
+tips:默认为明日不可选择
+
+<code src="./demos/date-range/custom-min-date.tsx"></code>
 
 ### DateRangeUtils
 

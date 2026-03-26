@@ -10,7 +10,7 @@ export default () => {
 
   return (
     <Card>
-      <DateRangePicker value={value} onChange={setValue} />
+      <DateRangePicker value={value} onChange={setValue} minDate="2012-01-01" />
     </Card>
   );
 };

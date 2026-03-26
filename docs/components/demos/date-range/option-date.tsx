@@ -8,9 +8,15 @@ export default () => {
     ...DateRangeUtils.getInitValue(),
   });
 
+  const optionsValue = ['1', '3', '6', '12', '36'];
+
   return (
     <Card>
-      <DateRangePicker value={value} onChange={setValue} />
+      <DateRangePicker
+        optionsValue={optionsValue}
+        value={value}
+        onChange={setValue}
+      />
     </Card>
   );
 };

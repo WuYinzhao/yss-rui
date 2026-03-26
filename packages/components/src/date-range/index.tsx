@@ -3,12 +3,13 @@ import dayjs from 'dayjs';
 import localeData from 'dayjs/plugin/localeData';
 import weekday from 'dayjs/plugin/weekday';
 import { useEffect, useState } from 'react';
+import type { DateRangeProps, DateRangeType, Dayjs } from './type';
+import { getBeginDate, getInitValue } from './utils';
 
 dayjs.extend(weekday);
 dayjs.extend(localeData);
 
-import { getBeginDate, getInitValue } from './utils';
-const selectOptions = [
+const selectOptions: { value: string; label: string }[] = [
   { value: 'custom', label: '指定日' },
   { value: '1', label: '近1月' },
   { value: '3', label: '近3月' },
@@ -19,22 +20,26 @@ const selectOptions = [
   { value: 'establish', label: '成立以来' },
 ];
 
-export default (props: any) => {
+function DateRangePicker(props: DateRangeProps) {
   const {
     id,
     value,
-    onChange,
-    optionsValue = ['1', '3', '6', '12', '36', '60', 'establish'],
-    minDate,
-    showQuickSelect = true,
+    format = 'YYYY-MM-DD',
+    disabledDate = (current) => {
+      return !!current && current > dayjs().subtract(1, 'days').endOf('day');
+    }, // 禁用日期
+    onChange, // 日期变化时触发
+    optionsValue = ['1', '3', '6', '12', '36', '60', 'establish'], // 快速选择下拉框属性
+    minDate, //成立以来的日期
+    showQuickSelect = true, //是否显示快速选择
   } = props;
 
-  let min_date = minDate || '2002-01-01';
+  const min_date = minDate || '2002-01-01';
 
-  const { selectVal, date } = value || {
-    selectVal: 'custom',
-    date: getInitValue(),
-  };
+  const initVal = getInitValue(2, format);
+  const raw = value || { selectVal: 'custom', ...initVal };
+  const { selectVal, date } = raw;
+
   const useSelectOptions = selectOptions.filter((i) =>
     ['custom', ...optionsValue].includes(i.value),
   );
@@ -47,31 +52,40 @@ export default (props: any) => {
       onSelectChange(selectVal);
     }
   }, [min_date]);
-  const datePickerChange = (val: any, index: any) => {
+  const datePickerChange = (dateOnDayjs: Dayjs, index: 0 | 1) => {
     const [first, second] = date;
     if (index === 0) {
-      onDateChange && onDateChange([val, second]);
+      onDateChange && onDateChange([dateOnDayjs, second]);
     } else {
-      onDateChange && onDateChange([first, val]);
+      onDateChange && onDateChange([first, dateOnDayjs]);
     }
   };
-  const disabledDate = (current: any) => {
-    return current && current > dayjs().subtract(1, 'days').endOf('day');
-  };
-  const onDateChange = (val: any) => {
-    let date = val;
+  const onDateChange = (val: DateRangeType) => {
+    let nextDate: DateRangeType = val;
     if (selectVal !== 'custom' && selectVal !== 'establish') {
-      const beginDate = getBeginDate(val[1], selectVal, min_date);
-      date = [beginDate, val[1]];
+      const beginDate = getBeginDate(val[1], Number(selectVal), min_date);
+      nextDate = [beginDate, val[1]];
     }
-    onChange({ selectVal, date });
+    onChange?.({
+      selectVal: selectVal ?? 'custom',
+      date: nextDate,
+      dateStr: [nextDate[0].format(format), nextDate[1].format(format)],
+    });
   };
-  const onSelectChange = (val: any) => {
+  const onSelectChange = (val: string) => {
     if (val === 'custom') {
-      onChange({ selectVal: 'custom', date: date });
+      onChange?.({
+        selectVal: 'custom',
+        date,
+        dateStr: [date[0].format(format), date[1].format(format)],
+      });
     } else {
       if (val === 'establish') {
-        setBeginDate({ type: val, beginDate: min_date, minDate: min_date });
+        setBeginDate({
+          type: val,
+          beginDate: dayjs(min_date),
+          minDate: min_date,
+        });
       } else {
         setBeginDate({ type: val, minDate: min_date });
       }
@@ -79,21 +93,29 @@ export default (props: any) => {
   };
   const setBeginDate = (param: {
     type?: string;
-    beginDate?: string;
+    beginDate?: Dayjs;
     minDate: string;
   }) => {
-    const endDate = date[1] as string;
-    const { minDate, type = '', beginDate } = param;
-    let newValue = [beginDate, endDate];
+    const endDate = date[1];
+    const { minDate: minDateParam, type = '', beginDate } = param;
+    let newValue: DateRangeType = [beginDate || dayjs(), endDate];
     const innerType = type || selectVal;
     if (innerType === 'custom') {
       return;
     }
     if (innerType !== 'establish') {
-      const beginDate = getBeginDate(endDate, innerType, minDate);
-      newValue = [beginDate, endDate];
+      const beginD = getBeginDate(
+        dayjs(endDate),
+        Number(innerType),
+        minDateParam,
+      );
+      newValue = [beginD, endDate];
     }
-    onChange({ selectVal: innerType, date: newValue });
+    onChange?.({
+      selectVal: (innerType ?? 'custom') as string,
+      date: newValue,
+      dateStr: [newValue[0].format(format), newValue[1].format(format)],
+    });
   };
 
   return (
@@ -114,8 +136,8 @@ export default (props: any) => {
           showToday={false}
           disabled={dateDisabled}
           allowClear={false}
-          value={dayjs(date[0], 'YYYY-MM-DD')}
-          onChange={(val, str) => datePickerChange(str, 0)}
+          value={date[0]}
+          onChange={(_val) => datePickerChange(_val, 0)}
         />
       </div>
       <div style={{ lineHeight: '32px', margin: '0 8px' }}>至</div>
@@ -125,10 +147,12 @@ export default (props: any) => {
           disabledDate={disabledDate}
           showToday={false}
           allowClear={false}
-          value={dayjs(date[1], 'YYYY-MM-DD')}
-          onChange={(val, str) => datePickerChange(str, 1)}
+          value={date[1]}
+          onChange={(_val) => datePickerChange(_val, 1)}
         />
       </div>
     </div>
   );
-};
+}
+
+export default DateRangePicker;

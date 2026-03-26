@@ -10,7 +10,11 @@ export default () => {
 
   return (
     <Card>
-      <DateRangePicker value={value} onChange={setValue} />
+      <DateRangePicker
+        value={value}
+        onChange={setValue}
+        showQuickSelect={false}
+      />
     </Card>
   );
 };
