@@ -4,76 +4,27 @@ nav:
   title: 工具
   order: 3
 group:
-  title: 树形
-  order: 2
+  title: 工具函数
+  order: 1
+toc: content
 ---
 
-# 树形工具
+## 何时使用
 
-树形数据处理的工具函数。
-
-## 函数
-
-### queryItem
-
-根据id查找树的某条数据。
-
-```typescript
-queryItem(data: any[], id: number | string, queryKey?: string): any
-```
-
-### findKeyById
-
-根据key查找树的某条数据。
-
-```typescript
-findKeyById(data: any[], key: string, id: any): any
-```
-
-### getTreeItem
-
-获取扁平当前item。
-
-```typescript
-getTreeItem(list: any[], val: any): any
-```
-
-### getTreeName
-
-获取树节点的name。
-
-```typescript
-getTreeName(list: any[], val: any): any
-```
-
-### treeToArray
-
-树形数据扁平化。
-
-```typescript
-treeToArray(tree: any[]): any[]
-```
-
-### findFirstLeafNodeInArray
-
-递归查找树形数组中的第一个叶子节点。
-
-```typescript
-findFirstLeafNodeInArray(treeArray: any[], childrenKey?: string): any
-```
-
-### setDisabledByCondition
-
-递归遍历树形数组并根据条件函数设置disabled属性。
-
-```typescript
-setDisabledByCondition(
-  treeArray: any[],
-  conditionFn: (node: any) => boolean,
-  childrenKey?: string
-): any[]
-```
+- 需要将树形表头或树形数据拉平、扁平化。
+- 需要为表格行数据计算合并行（`rowSpan`）字段。
+- 需要在树数据上合并字段、按条件设置 `disabled` 等。
 
 ## 代码演示
 
-<code src="./demos/tree.tsx"></code>
+### 拉平与扁平化
+
+<code src="./demos/tree/flatten.tsx"></code>
+
+### 行合并 rowSpan
+
+<code src="./demos/tree/row-span.tsx"></code>
+
+### 树字段合并与禁用
+
+<code src="./demos/tree/advanced.tsx"></code>

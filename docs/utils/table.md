@@ -2,58 +2,24 @@
 title: 表格工具
 nav:
   title: 工具
-  order: 3
+  order: 4
 group:
-  title: 表格
-  order: 3
+  title: 工具函数
+  order: 1
+toc: content
 ---
 
-# 表格工具
+## 何时使用
 
-表格数据处理相关的工具函数。
-
-## 函数
-
-### processingTableData
-
-处理table数据。
-
-```typescript
-processingTableData(data: any[], key?: string): any[]
-```
-
-### getRowSpan
-
-判断某行是否要合并。
-
-```typescript
-getRowSpan(data: any[], colNameList: string[]): any[]
-```
-
-### tableColumns
-
-表头高亮。
-
-```typescript
-tableColumns(data: any[], val: any): any[]
-```
-
-### DataProcess
-
-拉平表头数组。
-
-```typescript
-DataProcess(data: any[], initAry?: any[]): any[]
-```
-
-### getExpandedRowKeys
-
-处理树形表格数据，获取需要展开的行keys。
-
-```typescript
-getExpandedRowKeys(data: any[], initAry?: any[], name?: string): any[]
-```
+- 需要对大数字做字符串层面的乘除与保留小数，避免精度问题。
+- 需要按列单位（元 / 万 / 亿等）格式化表格单元格展示。
 
 ## 代码演示
 
-<code src="./demos/table.tsx"></code>
+### 大数运算与千分位
+
+<code src="./demos/table/number.tsx"></code>
+
+### 按列配置格式化行数据
+
+<code src="./demos/table/format-table.tsx"></code>

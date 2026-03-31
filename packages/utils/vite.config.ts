@@ -42,7 +42,7 @@ export default defineConfig({
     },
     minify: false,
     rollupOptions: {
-      external: ['lodash', 'moment', 'html2canvas'],
+      external: ['lodash', 'dayjs', 'html2canvas'],
       output: [
         {
           format: 'es',

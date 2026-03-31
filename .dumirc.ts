@@ -75,6 +75,8 @@ export default defineConfig({
             { title: '日期工具', link: '/utils/date' },
             { title: '树形工具', link: '/utils/tree' },
             { title: '表格工具', link: '/utils/table' },
+            { title: '截图工具', link: '/utils/screenshot' },
+            { title: '对象与常量', link: '/utils/object' },
           ],
         },
       ],

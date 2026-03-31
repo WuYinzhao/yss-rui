@@ -6,6 +6,7 @@ nav:
 group:
   title: DOM
   order: 1
+toc: content
 ---
 
 # observerHeight
@@ -24,14 +25,14 @@ const height = observerHeight(ref: React.RefObject<HTMLElement>): number;
 
 ### 参数
 
-| 参数 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
-| ref | 要观察的元素的 ref | `React.RefObject<HTMLElement>` | - |
+| 参数 | 说明               | 类型                           | 默认值 |
+| ---- | ------------------ | ------------------------------ | ------ |
+| ref  | 要观察的元素的 ref | `React.RefObject<HTMLElement>` | -      |
 
 ### 返回值
 
-| 参数 | 说明 | 类型 |
-| --- | --- | --- |
+| 参数   | 说明           | 类型     |
+| ------ | -------------- | -------- |
 | height | 元素的当前高度 | `number` |
 
 ## 备注

@@ -1,60 +1,32 @@
+---
+title: 总览
+nav:
+  title: 工具
+  order: 1
+group:
+  title: 工具函数
+  order: 1
+---
+
 # 工具函数
 
-这里是工具函数的总览页面。
+这里是 `@yss-rui/utils` 工具函数说明与示例入口。
 
-## 分类
+## 模块列表
 
-### 日期工具
+### 日期与时间
 
-日期相关的工具函数，基于 moment.js 实现。
+- [日期工具](/utils/date) — `getStartDate`、`getEndDate`、`formateDateRange`
 
-- `getStartDate` - 获取指定时间单位前的起始日期
-- `getEndDate` - 获取指定时间单位前的结束日期
-- `getYearStartDate` - 获取指定年份的开始日期
-- `getYearEndDate` - 获取指定年份的结束日期
-- `getMonthEndDate` - 获取上个月最后一天
-- `disabledDate` - 禁止选择今天及之后日期
-- `disabledDateDay` - 禁止选择今天之后日期
+### 树与表格结构
 
-### 树形工具
+- [树形工具](/utils/tree) — `DataProcess`、`treeToArray`、`getRowSpan`、`deepAddField`、`mergeFieldsOnTree`、`setDisabledByCondition`
 
-树形数据处理的工具函数。
+### 数值与表格格式化
 
-- `queryItem` - 根据 id 查找树的某条数据
-- `findKeyById` - 根据 key 查找树的某条数据
-- `getTreeItem` - 获取扁平当前 item
-- `getTreeName` - 获取 treeName
-- `treeToArray` - tree 扁平化
-- `findFirstLeafNodeInArray` - 递归查找树形数组中的第一个叶子节点
-- `setDisabledByCondition` - 根据条件设置节点 disabled 属性
+- [表格工具](/utils/table) — `formatTableData`、`handleData`、`format`、`divide`、`multiply`、`formatToThousands`
 
-### 表格工具
+### 其他
 
-表格数据处理相关的工具函数。
-
-- `processingTableData` - 处理 table 数据
-- `getRowSpan` - 判断某行是否要合并
-- `tableColumns` - 表头高亮
-- `DataProcess` - 拉平表头数组
-- `getExpandedRowKeys` - 处理树形表格数据
-
-### 其他工具
-
-- `screenShotImage` - 截图功能
-- `getHeight` - 根据屏幕高度计算
-- `cloneData` / `cloneList` - 递归循环菜单
-
-## 使用示例
-
-```tsx | pure
-import { getStartDate, treeToArray, screenShotImage } from '@yss-rui/utils';
-
-// 获取去年的开始日期
-const startDate = getStartDate(1, 'year'); // '2024-01-01'
-
-// 树形数据扁平化
-const flatList = treeToArray(treeData);
-
-// 截图
-const imageBase64 = await screenShotImage('dom-id');
-```
+- [截图工具](/utils/screenshot) — `screenShotImage`
+- [对象与常量](/utils/object) — `unitOption`、`openObjectArry`、`getFirstOrDefault`
