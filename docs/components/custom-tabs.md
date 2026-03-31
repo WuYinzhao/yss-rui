@@ -23,4 +23,10 @@ toc: content
 
 ## API
 
-详见源码 `packages/components/src/custom-tabs/`。
+### CustomTabs
+
+| 属性      | 说明              | 类型                    | 默认值 |
+| --------- | ----------------- | ----------------------- | ------ |
+| activeKey | 当前激活页签      | `string`                | -      |
+| items     | 页签项（同 antd） | `TabsProps['items']`    | -      |
+| onChange  | 切换页签          | `TabsProps['onChange']` | -      |

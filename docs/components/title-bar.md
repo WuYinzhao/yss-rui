@@ -23,4 +23,13 @@ toc: content
 
 ## API
 
-详见源码 `packages/components/src/table-second-header/`。
+### TitleBar
+
+| 属性         | 说明                                                | 类型                  | 默认值      |
+| ------------ | --------------------------------------------------- | --------------------- | ----------- |
+| leftContent  | 左侧内容（通常为标题）                              | `ReactNode`           | -           |
+| rightContent | 右侧内容（通常为操作）                              | `ReactNode`           | -           |
+| leftStyle    | 左侧容器额外样式（会与内置 `text` 类型样式合并）    | `CSSProperties`       | -           |
+| rightStyle   | 右侧容器额外样式                                    | `CSSProperties`       | -           |
+| leftType     | 左侧预设：`text` 为标题色；`opreate` 为链接式操作色 | `'text' \| 'opreate'` | `'text'`    |
+| rightType    | 右侧预设，同上                                      | `'text' \| 'opreate'` | `'opreate'` |

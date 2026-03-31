@@ -2,7 +2,6 @@ import { Tree } from 'antd';
 import type { DataNode } from 'antd/es/tree';
 import { isEmpty } from 'lodash';
 import type { Key } from 'react';
-import { useState } from 'react';
 import './index.less';
 import type { SingleTreeProps } from './type';
 
@@ -17,11 +16,9 @@ size  大小
 showSwitcher  是否显示展开收起按钮
 */
 export default (props: SingleTreeProps) => {
-  const [collapsed, setCollapsed] = useState(false);
   const {
     treeData,
     selectedKeys,
-    width = 280,
     onSelectKeys,
     size = 'large',
     showSwitcher = false,
@@ -33,7 +30,6 @@ export default (props: SingleTreeProps) => {
   return (
     <div
       style={{
-        display: collapsed ? 'none' : 'block',
         height: 'calc(100% - 24px)',
       }}
       className={[

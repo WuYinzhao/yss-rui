@@ -19,3 +19,12 @@ toc: content
 ### 基础用法
 
 <code src="./demos/collapse-panel/basic.tsx"></code>
+
+## API
+
+### CollapsePanel
+
+| 属性     | 说明                                   | 类型        | 默认值 |
+| -------- | -------------------------------------- | ----------- | ------ |
+| width    | 左侧区域宽度（px），影响 flex 固定列宽 | `number`    | `280`  |
+| children | 收起面板内的内容                       | `ReactNode` | -      |

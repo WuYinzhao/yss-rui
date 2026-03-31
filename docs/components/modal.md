@@ -23,4 +23,4 @@ toc: content
 
 ## API
 
-与 `antd` Modal 一致，额外样式见 `packages/components/src/modal/`。
+与 antd [Modal](https://4x.ant.design/components/modal-cn/) 的 **API 一致**（类型为 `ModalProps`）。本封装会固定设置根容器 **`wrapClassName='dialog-item'`**（用于统一弹窗样式），其余行为与 antd 相同。

@@ -47,4 +47,37 @@ tips:默认为明日不可选择
 
 ## API
 
-详见源码 `packages/components/src/date-range/`。
+左侧快捷项内置「指定日 / 近 1 月 / … / 成立以来」等，可通过 `optionsValue` 筛选；`showQuickSelect` 为 `false` 时只保留两个 `DatePicker`。
+
+### DateRangePicker
+
+| 属性            | 说明                                   | 类型                                 | 默认值                                     |
+| --------------- | -------------------------------------- | ------------------------------------ | ------------------------------------------ |
+| id              | 根节点 `id`                            | `string`                             | -                                          |
+| value           | 受控：区间与快捷项                     | `DateRangeValue`                     | 内置 `getInitValue(2, format)`             |
+| format          | 日期格式                               | `string`                             | `'YYYY-MM-DD'`                             |
+| disabledDate    | 不可选日期                             | 同 antd `DatePicker['disabledDate']` | 默认禁用「明日及之后」                     |
+| onChange        | 值变化                                 | `(value: DateRangeValue) => void`    | -                                          |
+| optionsValue    | 允许的快捷项（不含 `custom`）          | `string[]`                           | `['1','3','6','12','36','60','establish']` |
+| minDate         | 「成立以来」等逻辑使用的最早日期字符串 | `string`                             | `'2002-01-01'`                             |
+| showQuickSelect | 是否显示左侧快捷下拉                   | `boolean`                            | `true`                                     |
+
+### DateRangeValue
+
+| 属性      | 说明                  | 类型               | 默认值 |
+| --------- | --------------------- | ------------------ | ------ |
+| selectVal | 当前快捷项或 `custom` | `string`           | -      |
+| date      | `[开始, 结束]`        | `[Dayjs, Dayjs]`   | -      |
+| dateStr   | 格式化后的起止字符串  | `[string, string]` | -      |
+
+### DateRangeUtils
+
+| 方法 / 对象         | 说明                                     | 备注                                             |
+| ------------------- | ---------------------------------------- | ------------------------------------------------ |
+| getPastDayOfSomeDay | 从某日按单位前推                         | 参数含 `someDay`、`amount`、`dateUnit`、`format` |
+| getBeginDate        | 结合结束日与快捷月数、最早日计算开始日   | `(endDate, amount, minDate)`                     |
+| getOption           | 在 options 中按 `value` 查找项           | -                                                |
+| assignDateValidate  | 校验区间及可选「最短时间差」             | 返回两个表单项的校验结果数组                     |
+| getInitValue        | 默认区间：上上月末所在年年初 ～ 上上月末 | `(forward?, format?)`                            |
+| getMonthInitValue   | 上上月整月区间                           | -                                                |
+| getQuarterInitValue | 上一完整季度区间                         | -                                                |

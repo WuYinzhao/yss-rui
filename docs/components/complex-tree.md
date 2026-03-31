@@ -49,4 +49,37 @@ tips:父节点也为真实节点所以子节点全部选中时父节点不会自
 
 ## API
 
-详见源码 `packages/components/src/complex-tree/`。
+### ComplexTree
+
+| 属性             | 说明                                                                                                                             | 类型                                 | 默认值                        |
+| ---------------- | -------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ | ----------------------------- |
+| treeData         | 树数据，节点需包含 `key`、`name`，子节点放在 `children`                                                                          | `ComplexTreeNode[]`                  | -                             |
+| checkedKeys      | 受控：当前勾选的节点 key 列表                                                                                                    | `string[]`                           | -                             |
+| describeTips     | 启用 Ctrl 多选时在树上方展示的提示文案                                                                                           | `string`                             | `'Ctrl+选中：全选所有子节点'` |
+| toggleData       | 顶部切换条选项（多棵树切换时使用）                                                                                               | `ComplexTreeToggleItem[]`            | `[]`                          |
+| toggleKey        | 当前选中的切换项，对应 `toggleData[].value`                                                                                      | `string`                             | `''`                          |
+| disabledItemFunc | 自定义节点是否禁用，返回 `true` 表示禁用                                                                                         | `(item: ComplexTreeNode) => boolean` | -                             |
+| showLine         | 是否显示连接线                                                                                                                   | `boolean`                            | `true`                        |
+| switcherIcon     | 为 `true` 时展示顶部「快速检索」与「展开全部/收起全部」；为 `false` 时隐藏该区域；同时传入内部树用于控制展开图标样式（CSS 变量） | `boolean`                            | `true`                        |
+| onClickToggle    | 点击切换条某项时回调，参数为该项的 `value`                                                                                       | `(val: string) => void`              | -                             |
+| onClickCheck     | 勾选变化时回调；`keys` 为当前应同步的勾选 key；`e` 与 antd `Tree` 的 `onCheck` 回调第二个参数（info）一致                        | `(keys: string[], e) => void`        | -                             |
+| isCtrl           | 是否启用按住 Ctrl（Mac 为 Meta）时按子树批量勾选                                                                                 | `boolean`                            | `false`                       |
+| multiple_check   | 是否多选；为 `false` 时表现为单选                                                                                                | `boolean`                            | `true`                        |
+| checkStrictly    | 是否父子独立勾选（`true` 父子不关联）；为 `false` 时走父子联动                                                                   | `boolean`                            | `true`                        |
+| disableChildren  | 父节点选中后是否禁用其下子节点                                                                                                   | `boolean`                            | `false`                       |
+
+### ComplexTreeNode
+
+| 属性     | 说明                               | 类型                | 默认值 |
+| -------- | ---------------------------------- | ------------------- | ------ |
+| key      | 节点唯一标识                       | `string`            | -      |
+| name     | 节点展示名称（检索按 `name` 匹配） | `string`            | -      |
+| children | 子节点                             | `ComplexTreeNode[]` | -      |
+| disabled | 是否禁用该节点                     | `boolean`           | -      |
+
+### ComplexTreeToggleItem
+
+| 属性  | 说明                                               | 类型     | 默认值 |
+| ----- | -------------------------------------------------- | -------- | ------ |
+| value | 切换项值，用于 `toggleKey` 与 `onClickToggle` 入参 | `string` | -      |
+| label | 展示文案                                           | `string` | -      |

@@ -23,4 +23,14 @@ toc: content
 
 ## API
 
-详见源码 `packages/components/src/list-tree/`。
+基于 antd `Checkbox.Group`；`fieldNames` 用于指定选项中的 id / 文案字段名。
+
+### ListTree
+
+| 属性            | 说明                                                                    | 类型                                      | 默认值                       |
+| --------------- | ----------------------------------------------------------------------- | ----------------------------------------- | ---------------------------- |
+| checkboxOption  | 可选项列表，项内需包含 `fieldNames` 所指 id、name 字段；可选 `disabled` | `ListTreeCheckboxOption[]`                | -                            |
+| defaultValue    | 初始选中值（id 列表）                                                   | `(string \| number)[]`                    | -                            |
+| fieldNames      | 字段映射                                                                | `{ id: string; name: string }`            | `{ id: 'id', name: 'name' }` |
+| leftCheckChange | 选中变化时回调当前选中项对应的对象列表                                  | `(res: ListTreeCheckboxOption[]) => void` | -                            |
+| isSingle        | 为 `true` 时表现为单选（只保留最后一次勾选）                            | `boolean`                                 | `true`                       |

@@ -31,4 +31,14 @@ toc: content
 
 ## API
 
-详见源码 `packages/components/src/single-tree/`。
+树节点字段通过内部 `fieldNames` 固定为 `title: 'name'`、`key: 'id'`、`children: 'children'`，数据需使用 `id` / `name` / `children`。
+
+### SingleTree
+
+| 属性         | 说明                                                  | 类型                                   | 默认值    |
+| ------------ | ----------------------------------------------------- | -------------------------------------- | --------- |
+| treeData     | 树数据                                                | `DataNode[]`（使用 `id`、`name` 字段） | -         |
+| selectedKeys | 当前选中节点 key（单选）                              | `Key`                                  | -         |
+| onSelectKeys | 选中变化，`key` 为节点 id，`node` 为 antd 树节点      | `(key: Key, node: DataNode) => void`   | -         |
+| size         | 尺寸样式类名：`sider-tree-small` / `sider-tree-large` | `'large' \| 'small'`                   | `'large'` |
+| showSwitcher | 是否显示树展开/收起开关（默认隐藏）                   | `boolean`                              | `false`   |

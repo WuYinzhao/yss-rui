@@ -34,7 +34,6 @@ export default (props: CustomSelectProps) => {
       treeCheckable={true}
       fieldNames={fieldNames}
       treeData={treeData}
-      open={true}
       onChange={(value) => {
         onChange?.(value as string[]);
       }}

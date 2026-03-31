@@ -20,7 +20,3 @@ toc: content
 ### 基础用法
 
 <code src="./demos/styled/basic.tsx"></code>
-
-## API
-
-详见源码 `packages/components/src/styled/`。

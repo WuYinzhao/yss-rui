@@ -23,4 +23,14 @@ toc: content
 
 ## API
 
-详见源码 `packages/components/src/TreeSelect/`。
+基于 antd `TreeSelect`，固定 `treeCheckable` 为 `true`；在 `treeData` / `value` / `onChange` / `fieldNames` 等与下表一致的用法上封装了全选区域（见 `popupRender`）。**其余属性**与 antd [TreeSelect](https://4x.ant.design/components/tree-select-cn/) 一致（类型上省略了 `treeData`、`value`、`onChange`、`open` 的默认定义，由本组件声明）。
+
+### CustomSelect
+
+| 属性         | 说明                         | 类型                            | 默认值                                                     |
+| ------------ | ---------------------------- | ------------------------------- | ---------------------------------------------------------- |
+| treeData     | 树形数据                     | `TreeSelectProps['treeData']`   | `[]`                                                       |
+| value        | 已选值（多选为 key 数组）    | `string[]`                      | `[]`                                                       |
+| onChange     | 选择变化                     | `(value: string[]) => void`     | -                                                          |
+| fieldNames   | 字段映射                     | 同 antd TreeSelect `fieldNames` | `{ label: 'label', value: 'value', children: 'children' }` |
+| queryloading | 下拉内全选区域是否处于加载态 | `boolean`                       | `false`                                                    |
