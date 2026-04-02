@@ -1,4 +1,4 @@
-import { CustomTabs } from '@OrinUI/components';
+import { CustomTabs } from '@orinui/components';
 import { Card } from 'antd';
 import { useState } from 'react';
 

@@ -9,7 +9,7 @@
 观察元素高度变化的 Hook，使用 ResizeObserver API 实现。
 
 ```tsx | pure
-import { observerHeight } from '@OrinUI/hooks';
+import { observerHeight } from '@orinui/hooks';
 import { useRef } from 'react';
 
 function MyComponent() {

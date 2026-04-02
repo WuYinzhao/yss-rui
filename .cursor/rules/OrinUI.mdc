@@ -2,7 +2,7 @@
 alwaysApply: true
 ---
 
-# OrinUI 代码生成规范
+# orinui 代码生成规范
 
 ## 项目概览
 
@@ -14,23 +14,23 @@ alwaysApply: true
 
 | npm 包名 | 路径 | 说明 |
 | --- | --- | --- |
-| `@OrinUI/components` | `packages/components` | 主组件库；Vite 构建，`yarn build:components` |
-| `@OrinUI/hooks` | `packages/hooks` | Hooks 包；`yarn build:hooks` |
-| `@OrinUI/utils` | `packages/utils` | 工具包；`yarn build:utils` |
-| `@OrinUI/ai-skills` | `packages/ai-skills` | AI skills 包；`yarn build:ai-skills` |
+| `@orinui/components` | `packages/components` | 主组件库；Vite 构建，`yarn build:components` |
+| `@orinui/hooks` | `packages/hooks` | Hooks 包；`yarn build:hooks` |
+| `@orinui/utils` | `packages/utils` | 工具包；`yarn build:utils` |
+| `@orinui/ai-skills` | `packages/ai-skills` | AI skills 包；`yarn build:ai-skills` |
 | 根包 | `src/` | 根入口与示例；father 构建见 `yarn build` / `build:all` |
 
 ## 路径别名（import 优先与 tsconfig 一致）
 
 根 [`tsconfig.json`](tsconfig.json) 中：
 
-- `@OrinUI/components`、`@OrinUI/components/*` → `packages/components/src`（及子路径）
-- `@OrinUI/hooks`、`@OrinUI/hooks/*` → `packages/hooks/src`
-- `@OrinUI/utils`、`@OrinUI/utils/*` → `packages/utils/src`
-- `@OrinUI/ai-skills`、`@OrinUI/ai-skills/*` → `packages/ai-skills/src`
-- 根别名：`OrinUI` → `src`；`@/*` → `packages/*`（根视角）
+- `@orinui/components`、`@orinui/components/*` → `packages/components/src`（及子路径）
+- `@orinui/hooks`、`@orinui/hooks/*` → `packages/hooks/src`
+- `@orinui/utils`、`@orinui/utils/*` → `packages/utils/src`
+- `@orinui/ai-skills`、`@orinui/ai-skills/*` → `packages/ai-skills/src`
+- 根别名：`orinui` → `src`；`@/*` → `packages/*`（根视角）
 
-各子包内通常有 `@/*` → 当前包的 `src/*`（见各包 `tsconfig.json` / `vite.config.ts`）。**跨包引用优先使用 `@OrinUI/...` 包名**；包内用 `@/`。
+各子包内通常有 `@/*` → 当前包的 `src/*`（见各包 `tsconfig.json` / `vite.config.ts`）。**跨包引用优先使用 `@orinui/...` 包名**；包内用 `@/`。
 
 ## 技术栈与库代码约束
 

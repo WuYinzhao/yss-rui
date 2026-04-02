@@ -9,14 +9,14 @@
     "paths": {
       "@/*": ["packages/*"],
       "@@/*": [".dumi/tmp/*"],
-      "@OrinUI/components": ["packages/components/src"],
-      "@OrinUI/components/*": ["packages/components/src/*"],
-      "@OrinUI/hooks": ["packages/hooks/src"],
-      "@OrinUI/hooks/*": ["packages/hooks/src/*"],
-      "@OrinUI/utils": ["packages/utils/src"],
-      "@OrinUI/utils/*": ["packages/utils/src/*"],
-      "@OrinUI/ai-skills": ["packages/ai-skills/src"],
-      "@OrinUI/ai-skills/*": ["packages/ai-skills/src/*"]
+      "@orinui/components": ["packages/components/src"],
+      "@orinui/components/*": ["packages/components/src/*"],
+      "@orinui/hooks": ["packages/hooks/src"],
+      "@orinui/hooks/*": ["packages/hooks/src/*"],
+      "@orinui/utils": ["packages/utils/src"],
+      "@orinui/utils/*": ["packages/utils/src/*"],
+      "@orinui/ai-skills": ["packages/ai-skills/src"],
+      "@orinui/ai-skills/*": ["packages/ai-skills/src/*"]
     }
   },
   "references": [

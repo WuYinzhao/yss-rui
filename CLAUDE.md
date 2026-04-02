@@ -40,7 +40,7 @@ yarn lint:css       # 仅 Stylelint
 
 ```
 ├── packages/
-│   ├── components/          # 主组件包 @OrinUI/component-library
+│   ├── components/          # 主组件包 @orinui/component-library
 │   │   ├── src/             # 组件源码
 │   │   ├── dist/            # 构建产物 (es/lib)
 │   │   ├── vite.config.ts   # vite 构建配置

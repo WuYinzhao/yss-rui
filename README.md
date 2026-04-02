@@ -1,7 +1,7 @@
-# OrinUI
+# orinui
 
-[![NPM version](https://img.shields.io/npm/v/OrinUI.svg?style=flat)](https://npmjs.org/package/OrinUI)
-[![NPM downloads](http://img.shields.io/npm/dm/OrinUI.svg?style=flat)](https://npmjs.org/package/OrinUI)
+[![NPM version](https://img.shields.io/npm/v/orinui.svg?style=flat)](https://npmjs.org/package/orinui)
+[![NPM downloads](http://img.shields.io/npm/dm/orinui.svg?style=flat)](https://npmjs.org/package/orinui)
 
 A react library developed with dumi
 
@@ -29,15 +29,15 @@ A react library developed with dumi
 
 ### Import 约定
 
-- 跨包优先使用：`@OrinUI/*`
-  - 例如：`@OrinUI/components`、`@OrinUI/hooks`
+- 跨包优先使用：`@orinui/*`
+  - 例如：`@orinui/components`、`@orinui/hooks`
 - 包内使用：`@/`
   - 例如在 `packages/components` 内部使用 `@/components/...`
 
 ### TypeScript 配置
 
 - 基于根 `tsconfig.json` 的路径别名：
-  - `@OrinUI/components` / `@OrinUI/hooks` / `@OrinUI/utils` / `@OrinUI/ai-skills`
+  - `@orinui/components` / `@orinui/hooks` / `@orinui/utils` / `@orinui/ai-skills`
 - 子包各自 `tsconfig.json` 的 `@/*` 指向该包的 `src/*`
 
 ## 运行命令
@@ -97,10 +97,10 @@ pnpm doctor
 ```text
 .
 ├─ packages/
-│  ├─ components/     # @OrinUI/components
-│  ├─ hooks/          # @OrinUI/hooks
-│  ├─ utils/          # @OrinUI/utils
-│  └─ ai-skills/      # @OrinUI/ai-skills
+│  ├─ components/     # @orinui/components
+│  ├─ hooks/          # @orinui/hooks
+│  ├─ utils/          # @orinui/utils
+│  └─ ai-skills/      # @orinui/ai-skills
 ├─ docs/              # dumi 文档与 demo
 ├─ src/               # 根入口（示例/对外入口）
 ├─ .dumirc.ts         # dumi 配置

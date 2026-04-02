@@ -1,4 +1,4 @@
-import { Table } from '@OrinUI/components';
+import { Table } from '@orinui/components';
 import { Card } from 'antd';
 
 const columns = [

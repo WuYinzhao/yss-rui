@@ -1,4 +1,4 @@
-import { formatTableData } from '@OrinUI/utils';
+import { formatTableData } from '@orinui/utils';
 import { Card, Space, Typography } from 'antd';
 
 /**

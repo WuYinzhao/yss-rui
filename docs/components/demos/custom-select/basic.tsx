@@ -1,4 +1,4 @@
-import { CustomSelect } from '@OrinUI/components';
+import { CustomSelect } from '@orinui/components';
 import { Card } from 'antd';
 import { useState } from 'react';
 

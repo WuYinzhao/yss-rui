@@ -1,4 +1,4 @@
-import { getRowSpan } from '@OrinUI/utils';
+import { getRowSpan } from '@orinui/utils';
 import { Card, Table, Typography } from 'antd';
 
 const raw = [

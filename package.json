@@ -1,5 +1,5 @@
 {
-  "name": "OrinUI",
+  "name": "orinui",
   "version": "0.0.1",
   "private": true,
   "description": "A react library developed with dumi",
@@ -14,11 +14,11 @@
   ],
   "scripts": {
     "build": "pnpm run build:all",
-    "build:ai-skills": "pnpm --filter @OrinUI/ai-skills run build",
+    "build:ai-skills": "pnpm --filter @orinui/ai-skills run build",
     "build:all": "pnpm -r --filter \"./packages/*\" run build",
-    "build:components": "pnpm --filter @OrinUI/components run build",
-    "build:hooks": "pnpm --filter @OrinUI/hooks run build",
-    "build:utils": "pnpm --filter @OrinUI/utils run build",
+    "build:components": "pnpm --filter @orinui/components run build",
+    "build:hooks": "pnpm --filter @orinui/hooks run build",
+    "build:utils": "pnpm --filter @orinui/utils run build",
     "build:watch": "father dev",
     "dev": "dumi dev",
     "docs:build": "dumi build",

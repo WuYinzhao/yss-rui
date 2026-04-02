@@ -1,4 +1,4 @@
-import { Chart } from '@OrinUI/components';
+import { Chart } from '@orinui/components';
 
 export default () => {
   const optionDefault = {

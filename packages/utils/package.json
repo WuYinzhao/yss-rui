@@ -1,8 +1,8 @@
 {
-  "name": "@OrinUI/utils",
+  "name": "@orinui/utils",
   "version": "0.0.1-beta.1",
   "private": false,
-  "description": "OrinUI utils",
+  "description": "orinui utils",
   "keywords": [
     "react",
     "utils",
@@ -10,7 +10,7 @@
     "antd"
   ],
   "license": "MIT",
-  "author": "OrinUI",
+  "author": "orinui",
   "exports": {
     ".": {
       "types": "./dist/es/index.d.ts",

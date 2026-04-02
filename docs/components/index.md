@@ -1,6 +1,6 @@
 # 组件库
 
-这里是 `@OrinUI/components` 组件说明与示例入口。
+这里是 `@orinui/components` 组件说明与示例入口。
 
 ## 组件列表
 

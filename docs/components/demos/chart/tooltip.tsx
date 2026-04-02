@@ -1,4 +1,4 @@
-import { Chart, ChartTooltip } from '@OrinUI/components';
+import { Chart, ChartTooltip } from '@orinui/components';
 const { tooltipFormate } = ChartTooltip;
 
 export default () => {

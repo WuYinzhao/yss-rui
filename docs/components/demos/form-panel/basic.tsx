@@ -1,4 +1,4 @@
-import { FormPanel, Styled } from '@OrinUI/components';
+import { FormPanel, Styled } from '@orinui/components';
 import { Card, DatePicker, Form } from 'antd';
 
 const { Page, Content } = Styled;

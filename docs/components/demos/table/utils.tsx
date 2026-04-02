@@ -1,4 +1,4 @@
-import { TableUtils } from '@OrinUI/components';
+import { TableUtils } from '@orinui/components';
 import { Card, Space, Typography } from 'antd';
 
 export default () => {

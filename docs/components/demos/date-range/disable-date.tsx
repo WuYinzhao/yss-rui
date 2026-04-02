@@ -1,4 +1,4 @@
-import { DateRangePicker, DateRangeUtils } from '@OrinUI/components';
+import { DateRangePicker, DateRangeUtils } from '@orinui/components';
 import { Card } from 'antd';
 import dayjs, { Dayjs } from 'dayjs';
 import { useState } from 'react';

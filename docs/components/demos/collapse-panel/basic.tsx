@@ -1,4 +1,4 @@
-import { CollapsePanel, ComplexTree } from '@OrinUI/components';
+import { CollapsePanel, ComplexTree } from '@orinui/components';
 import { useState } from 'react';
 
 const treeData = [

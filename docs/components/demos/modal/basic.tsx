@@ -1,4 +1,4 @@
-import { CustomModal } from '@OrinUI/components';
+import { CustomModal } from '@orinui/components';
 import { Button, Card } from 'antd';
 import { useState } from 'react';
 

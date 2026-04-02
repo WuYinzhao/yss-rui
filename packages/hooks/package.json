@@ -1,8 +1,8 @@
 {
-  "name": "@OrinUI/hooks",
+  "name": "@orinui/hooks",
   "version": "0.0.1-beta.1",
   "private": false,
-  "description": "OrinUI hooks",
+  "description": "orinui hooks",
   "keywords": [
     "react",
     "hooks",
@@ -10,7 +10,7 @@
     "antd"
   ],
   "license": "MIT",
-  "author": "OrinUI",
+  "author": "orinui",
   "exports": {
     ".": {
       "types": "./dist/es/index.d.ts",

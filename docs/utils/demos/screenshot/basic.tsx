@@ -1,4 +1,4 @@
-import { screenShotImage } from '@OrinUI/utils';
+import { screenShotImage } from '@orinui/utils';
 import { Button, Card, Image, Space, Typography } from 'antd';
 import { useState } from 'react';
 

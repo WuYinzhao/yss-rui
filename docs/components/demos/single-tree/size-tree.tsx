@@ -1,4 +1,4 @@
-import { SingleTree } from '@OrinUI/components';
+import { SingleTree } from '@orinui/components';
 import { Card } from 'antd';
 import { useState } from 'react';
 

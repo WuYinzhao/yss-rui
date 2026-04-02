@@ -9,7 +9,7 @@ AI Skills 包提供了一系列可复用的 AI 技能模块，用于增强组件
 ## 使用方式
 
 ```tsx | pure
-import { SkillExample } from '@OrinUI/ai-skills';
+import { SkillExample } from '@orinui/ai-skills';
 
 function MyComponent() {
   // 使用 AI 技能

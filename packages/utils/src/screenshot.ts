@@ -1,7 +1,7 @@
 /** 用于图形操作的 的公共方法*/
 import html2canvas from 'html2canvas';
 
-const exportWrapDomId = 'OrinUI-data-export-canvas-id';
+const exportWrapDomId = 'orinui-data-export-canvas-id';
 const removeCssList = ['boxShadow'];
 
 function cloneCanvas(

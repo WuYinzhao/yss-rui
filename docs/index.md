@@ -1,6 +1,6 @@
 ---
 hero:
-  title: OrinUI
+  title: orinui
   description: 基于react的组件库
   actions:
     - text: 立即开始
@@ -18,4 +18,4 @@ features:
     description: Put ! description here
 ---
 
-OrinUI
+orinui

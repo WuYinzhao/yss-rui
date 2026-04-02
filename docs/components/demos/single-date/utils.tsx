@@ -1,4 +1,4 @@
-import { SingleDateUtils } from '@OrinUI/components';
+import { SingleDateUtils } from '@orinui/components';
 import { Card, Space, Typography } from 'antd';
 
 export default () => {

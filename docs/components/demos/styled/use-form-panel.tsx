@@ -6,7 +6,7 @@ import {
   Styled,
   Table,
   TitleBar,
-} from '@OrinUI/components';
+} from '@orinui/components';
 import { Card, DatePicker, Form, Input } from 'antd';
 import { useState } from 'react';
 

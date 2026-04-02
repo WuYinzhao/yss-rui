@@ -1,4 +1,4 @@
-import { OperateBar } from '@OrinUI/components';
+import { OperateBar } from '@orinui/components';
 import { Card } from 'antd';
 
 export default () => {
