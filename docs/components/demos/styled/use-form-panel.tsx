@@ -1,23 +1,16 @@
 import {
   CollapsePanel,
   ComplexTree,
+  FormPanel,
   OperateBar,
   Styled,
   Table,
   TitleBar,
 } from '@OrinUI/components';
-import { Button, Card, DatePicker, Form } from 'antd';
+import { Card, DatePicker, Form, Input } from 'antd';
 import { useState } from 'react';
 
-const {
-  Page,
-  Content,
-  Header,
-  FormContent,
-  FormQuery,
-  FormButton,
-  TableContent,
-} = Styled;
+const { Page, Content, TableContent } = Styled;
 
 const treeData = [
   {
@@ -67,6 +60,8 @@ const columns = [
 export default () => {
   const [checkedKeys, setCheckedKeys] = useState<string[]>(['1-1']);
 
+  const [form] = Form.useForm();
+
   return (
     <Card title="Styled 布局片段">
       <Page style={{ height: 560, border: '1px solid #eee' }}>
@@ -80,22 +75,28 @@ export default () => {
         </CollapsePanel>
 
         <Content>
-          <Header>
-            <Form>
-              <FormContent>
-                <FormQuery>
-                  <Form.Item name="endDate" label="截止日期">
-                    <DatePicker />
-                  </Form.Item>
-                </FormQuery>
-                <FormButton>
-                  <Button type="primary" htmlType="submit">
-                    查询
-                  </Button>
-                </FormButton>
-              </FormContent>
-            </Form>
-          </Header>
+          <FormPanel
+            useResetButton={false}
+            form={form}
+            onQuery={(values) => {
+              console.log(values);
+            }}
+            onReset={() => {}}
+          >
+            <Form.Item name="endDate" label="截止日期">
+              <DatePicker />
+            </Form.Item>
+            <Form.Item name="Input1" label="输入框1">
+              <Input style={{ width: 160 }} />
+            </Form.Item>
+            <Form.Item
+              name="Input2"
+              label="输入框2"
+              rules={[{ required: true, message: '${label} is required' }]}
+            >
+              <Input style={{ width: 160 }} />
+            </Form.Item>
+          </FormPanel>
           <OperateBar
             unitChar="元"
             downloadFun={() => {

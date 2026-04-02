@@ -52,15 +52,13 @@ export const EchartsContent = styled.div`
   display: flex;
 `;
 
-export default () => {
-  return {
-    Page,
-    Content,
-    Header,
-    FormContent,
-    FormQuery,
-    FormButton,
-    TableContent,
-    EchartsContent,
-  };
+export default {
+  Page,
+  Content,
+  Header,
+  FormContent,
+  FormQuery,
+  FormButton,
+  TableContent,
+  EchartsContent,
 };

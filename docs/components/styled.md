@@ -20,3 +20,7 @@ toc: content
 ### 基础用法
 
 <code src="./demos/styled/basic.tsx"></code>
+
+### 使用 formPanle 进行查询区域自适应适配
+
+<code src="./demos/styled/use-form-panel.tsx"></code>

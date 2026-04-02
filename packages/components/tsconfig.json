@@ -3,13 +3,12 @@
     "target": "ESNext",
     "composite": true,
     "module": "esnext",
-    "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "useDefineForClassFields": true,
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "allowJs": false,
     "skipLibCheck": true,
-    "esModuleInterop": false,
+    "esModuleInterop": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
@@ -19,9 +18,8 @@
     "rootDir": "./src",
     "outDir": "./dist/.tsc-ref",
     "jsx": "react-jsx",
-    "baseUrl": "./",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["./src/*"]
     }
   },
   "include": ["src/**/*"]

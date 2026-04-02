@@ -52,6 +52,11 @@ export default defineConfig({
             },
             { title: 'CustomTabs 表格页签', link: '/components/custom-tabs' },
             { title: 'Styled 布局样式', link: '/components/styled' },
+            { title: 'FormPanel 表单布局', link: '/components/form-panel' },
+            {
+              title: 'CollapsePanel 左侧布局',
+              link: '/components/collapse-panel',
+            },
           ],
         },
       ],

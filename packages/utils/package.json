@@ -3,6 +3,14 @@
   "version": "0.0.1",
   "private": false,
   "description": "OrinUI utils",
+  "keywords": [
+    "react",
+    "utils",
+    "ui",
+    "antd"
+  ],
+  "license": "MIT",
+  "author": "OrinUI",
   "exports": {
     ".": {
       "types": "./dist/es/index.d.ts",
@@ -13,6 +21,9 @@
   "main": "./dist/lib/index.js",
   "module": "./dist/es/index.js",
   "types": "./dist/es/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "vite build",
     "dev": "vite",

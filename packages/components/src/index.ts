@@ -7,6 +7,7 @@ export { default as CustomTabs } from './custom-tabs';
 export { default as DateRangePicker } from './date-range';
 export { default as DateRangeUtils } from './date-range/utils';
 export { default as ExcelHandle } from './excel-handle';
+export { default as FormPanel } from './form-panel';
 export { default as ListTree } from './list-tree';
 export { default as CustomModal } from './modal';
 export { default as OperateBar } from './operate-bar';
